@@ -27,11 +27,15 @@ const pickPosition = () => {
     matrix[pickRow - 1][pickCol - 1] = currentPlayer;
     steps++;
     displayBoard();
-    let win = checkWin();
+    let win = checkWin(currentPlayer);
     if (win) {
         console.log(`${currentPlayer} wins!!!`);
-    }
-    if (steps === 9) {
+        let restart = prompt('want to restart ? yes or no ');
+        console.log(restart);
+        if (restart === 'yes') {
+            startGame();
+        }
+    } else if (steps === 9) {
         console.log('It is a Tie, please restart the game!');
         let restart = prompt('want to restart ? yes or no');
         if (restart === 'yes') {
